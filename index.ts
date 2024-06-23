@@ -1,15 +1,14 @@
-export const router = new Bun.FileSystemRouter({
-  style: "nextjs",
-  dir: "./pages",
-  origin: "http://localhost:3000",
-  assetPrefix: "_next/static/",
-});
+import { router } from "./lib/router";
 
 const server = Bun.serve({
   port: process.env.PORT || 3000,
   fetch(request) {
-    return new Response("Welcome to Bun!");
+    let match = router.match(request);
+    let page = require(match!.filePath);
+    return new page(request, match?.query, match?.params);
   },
 });
 
 console.log(`Listening on localhost: ${server.port}`);
+
+export default server;
