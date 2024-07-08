@@ -1,7 +1,7 @@
 import type { MatchedRoute, Server } from "bun";
 import { createElement } from "react";
 import { renderToReadableStream } from "react-dom/server";
-import RootLayout from "../pages/_layout";
+import App from "../lib/app";
 
 export const handle_tsx = async (
   route: MatchedRoute,
@@ -11,7 +11,7 @@ export const handle_tsx = async (
   const path = route.filePath;
   const Page = require(path).default;
   const content = createElement(Page);
-  const pageWithLayout = createElement(RootLayout, null, content);
+  const pageWithLayout = createElement(App, null, content);
   const stream = await renderToReadableStream(pageWithLayout);
 
   return new Response(stream, {
