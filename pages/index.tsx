@@ -1,12 +1,20 @@
 import React from 'react';
-import RootLayout from './_layout';
 
-function Home(props: {message: string}) {
-  return (
-   
-      <h1 style={{color: 'red'}}>{props.message}</h1>
-    
-  );
+
+function App(props: {title: string},{children}: {children: React.ReactNode}){
+ return ( 
+  
+  <body>
+    <h1>{props.title}</h1>
+    <header><h1>my header</h1> </header>
+    <main>{children}</main>
+    <footer><p>my bun footer</p></footer>
+  </body>
+ 
+ )
 }
+ 
+export default App;
 
-export default Home;
+
+console.log(<App title='my App'/>)

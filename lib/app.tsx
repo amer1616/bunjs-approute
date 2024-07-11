@@ -2,15 +2,15 @@ import React from 'react'
 import RootLayout from '../pages/_layout'
 import Home from '../pages'
 
-function App() {
-  return (
-    <div>
-      <RootLayout>
-        <Home message={''}></Home>
+// function App() {
+//   return (
+//     <div>
+//       <RootLayout>
+//         <Home message={''}></Home>
       
-      </RootLayout>
-      </div>
-  )
-}
+//       </RootLayout>
+//       </div>
+//   )
+// }
 
-export default App
+// export default App
