@@ -2,7 +2,7 @@ import { router } from "./lib/router";
 // import { handle_tsx } from "./middleware/handle_tsx";
 
 import { renderToString } from "react-dom/server";
-import App from "./pages/index";
+
 
 const appServer = Bun.serve({
   port: process.env.PORT || 3000,
@@ -10,7 +10,7 @@ const appServer = Bun.serve({
     const match = router.match(req);
     if (match) {
       const App = require(match.filePath).default;
-      const html = renderToString(<App title="My App" children={undefined} />);
+      const html = renderToString(<App/>);
       return new Response(html, {
         headers: { "Content-Type": "text/html" },
       });
